@@ -88,4 +88,17 @@ describe('vocalists routes', () => {
     });
   });
 
+  it('deletes a specific existing vocalist', async () => {
+    const vocalist = await Vocalists.createVocalist({
+      kgroup: 'Itzy',
+      name: 'Lia'
+    });
+    const res = await request(app)
+      .delete(`/api/v1/vocalists/${vocalist.id}`);
+
+    expect(res.body).toEqual({
+      message: `${vocalist.name} has been deleted. What did ${vocalist.name} do to deserve that!?`
+    });
+  });
+
 });
