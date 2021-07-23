@@ -10,61 +10,82 @@ describe('rappers routes', () => {
   });
 
   it('creates a new rapper', async () => {
-    const rapper = { 
+    const strayKids = { 
       kgroup: 'Stray Kids', 
       name: 'Hyunjin' 
     };
     const res = await request(app)
       .post('/api/v1/rappers')
-      .send(rapper);
+      .send(strayKids);
 
     expect(res.body).toEqual({
       id: '1',
-      ...rapper
+      ...strayKids
     });
   });
   
   it('gets all rappers', async () => {
-    const hyunjin = await Rappers.createRapper({
+    const strayKids = await Rappers.createRapper({
       kgroup: 'Stray Kids', 
       name: 'Hyunjin'
     });
 
-    const moonbyul = await Rappers.createRapper({
+    const mamamoo = await Rappers.createRapper({
       kgroup: 'Mamamoo', 
       name: 'Moonbyul'
     });
 
-    const suga = await Rappers.createRapper(
+    const bts = await Rappers.createRapper(
       {
         kgroup: 'BTS', 
         name: 'Suga'
       });
 
-    const minho = await Rappers.createRapper(
+    const shinee = await Rappers.createRapper(
       {
         kgroup: 'SHINee', 
         name: 'Minho'
+      });
+    const ateez = await Rappers.createRapper(
+      {
+        kgroup: 'Ateez', 
+        name: 'Hongjoong'
       });
 
     const res = await request(app)
       .get('/api/v1/rappers');
 
-    expect(res.body).toEqual([hyunjin, moonbyul, suga, minho]);
+    expect(res.body).toEqual([strayKids, mamamoo, bts, shinee, ateez]);
   });
 
   it('gets one rapper by id', async () => {
-    const hongjoong = await Rappers.createRapper({
+    const ateez = await Rappers.createRapper({
       kgroup: 'Ateez',
       name: 'Hongjoong'
     });
     const res = await request(app)
-      .get(`/api/v1/rappers/${hongjoong.id}`);
+      .get(`/api/v1/rappers/${ateez.id}`);
 
-    expect(res.body).toEqual(hongjoong);
+    expect(res.body).toEqual(ateez);
   });
 
-  it('deletes an existing rapper', async () => {
+  it('updates the rapper of a specific existing group', async () => {
+    const bts = await Rappers.createRapper({
+      kgroup: 'BTS',
+      name: 'J-Hope'
+    });
+    const res = await request(app)
+      .put(`/api/v1/rappers/${bts.id}`)
+      .send({
+        name: 'J-Hope'
+      });
+    expect(res.body).toEqual({ 
+      ...bts, 
+      name: 'J-Hope' 
+    });
+  });
+
+  it('deletes a specific existing rapper', async () => {
     const rapper = await Rappers.createRapper({
       kgroup: 'Ateez',
       name: 'Hongjoong'
