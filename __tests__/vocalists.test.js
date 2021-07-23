@@ -72,5 +72,20 @@ describe('vocalists routes', () => {
     expect(res.body).toEqual(mamamoo);
   });
 
+  it('updates the vocalist of a specific existing group', async () => {
+    const mamamoo = await Vocalists.createVocalist({
+      kgroup: 'Mamamoo',
+      name: 'Wheein'
+    });
+    const res = await request(app)
+      .put(`/api/v1/vocalists/${mamamoo.id}`)
+      .send({
+        name: 'Wheein'
+      });
+    expect(res.body).toEqual({
+      ...mamamoo,
+      name: 'Wheein'
+    });
+  });
 
 });
