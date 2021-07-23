@@ -1,7 +1,7 @@
-import pool from '../lib/utils/pool.js';
-import setup from '../data/setup.js';
+import pool from '../lib/utils/pool';
+import setup from '../data/setup';
 import request from 'supertest';
-import app from '../lib/app.js';
+import app from '../lib/app';
 
 describe('rappers routes', () => {
   beforeEach(() => {
@@ -9,7 +9,7 @@ describe('rappers routes', () => {
   });
 
   it('creates a new rapper', async () => {
-    const rapper = { group: 'Ateez', name: 'Hongjoong' };
+    const rapper = { kgroup: 'Stray Kids', name: 'Hyunjin' };
     const res = await request(app)
       .post('/api/v1/rappers')
       .send(rapper);
