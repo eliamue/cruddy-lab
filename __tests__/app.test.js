@@ -10,7 +10,10 @@ describe('rappers routes', () => {
   });
 
   it('creates a new rapper', async () => {
-    const rapper = { kgroup: 'Stray Kids', name: 'Hyunjin' };
+    const rapper = { 
+      kgroup: 'Stray Kids', 
+      name: 'Hyunjin' 
+    };
     const res = await request(app)
       .post('/api/v1/rappers')
       .send(rapper);
@@ -22,30 +25,31 @@ describe('rappers routes', () => {
   });
   
   it('gets all rappers', async () => {
-    const allRappers = await Rappers.insert(
-      [
-        {
-          kgroup: 'Stray Kids', 
-          name: 'Hyunjin'
-        },
-        {
-          kgroup: 'Mamamoo', 
-          name: 'Moonbyul'
-        },
-        {
-          kgroup: 'BTS', 
-          name: 'Suga'
-        },
-        {
-          kgroup: 'SHINee', 
-          name: 'Minho'
-        },
-      ]
-    );
-    const res = await request(app)
-      .post('/api/vy/rappers')
-      .send(allRappers);
+    const hyunjin = await Rappers.createRapper({
+      kgroup: 'Stray Kids', 
+      name: 'Hyunjin'
+    });
 
-    expect(res.body).toEqual([allRappers]);
+    const moonbyul = await Rappers.createRapper({
+      kgroup: 'Mamamoo', 
+      name: 'Moonbyul'
+    });
+
+    const suga = await Rappers.createRapper(
+      {
+        kgroup: 'BTS', 
+        name: 'Suga'
+      });
+
+    const minho = await Rappers.createRapper(
+      {
+        kgroup: 'SHINee', 
+        name: 'Minho'
+      });
+
+    const res = await request(app)
+      .get('/api/v1/rappers');
+
+    expect(res.body).toEqual([hyunjin, moonbyul, suga, minho]);
   });
 });
