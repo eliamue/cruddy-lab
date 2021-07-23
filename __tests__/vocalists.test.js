@@ -60,4 +60,17 @@ describe('vocalists routes', () => {
 
     expect(res.body).toEqual([gIdle, mamamoo, bts, shinee, itzy]);
   });
+
+  it('gets one vocalist by id', async () => {
+    const mamamoo = await Vocalists.createVocalist({
+      kgroup: 'Mamamoo',
+      name: 'Hwasa'
+    });
+    const res = await request(app)
+      .get(`/api/v1/vocalists/${mamamoo.id}`);
+
+    expect(res.body).toEqual(mamamoo);
+  });
+
+
 });
