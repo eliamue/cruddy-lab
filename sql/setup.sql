@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS rappers;
+
+CREATE TABLE rappers (
+    id BIGINT GENERATES ALWAYS AS IDENTITY PRIMARY KEY,
+    group TEXT NOT NULL,
+    name TEXT NOT NULL
+    
+);
