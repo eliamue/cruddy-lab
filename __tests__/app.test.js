@@ -52,4 +52,15 @@ describe('rappers routes', () => {
 
     expect(res.body).toEqual([hyunjin, moonbyul, suga, minho]);
   });
+
+  it('gets one rapper by id', async () => {
+    const hongjoong = await Rappers.createRapper({
+      kgroup: 'Ateez',
+      name: 'Hongjoong'
+    });
+    const res = await request(app)
+      .get(`/api/v1/rappers/${hongjoong.id}`);
+
+    expect(res.body).toEqual(hongjoong);
+  });
 });
