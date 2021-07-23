@@ -63,4 +63,17 @@ describe('rappers routes', () => {
 
     expect(res.body).toEqual(hongjoong);
   });
+
+  it('deletes an existing rapper', async () => {
+    const rapper = await Rappers.createRapper({
+      kgroup: 'Ateez',
+      name: 'Hongjoong'
+    });
+    const res = await request(app)
+      .delete(`/api/v1/rappers/${rapper.id}`);
+
+    expect(res.body).toEqual({
+      message: `${rapper.name} has been removed. Poor ${rapper.name}!`
+    });
+  });
 });
