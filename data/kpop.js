@@ -1,6 +1,6 @@
 export default [
   {
-    group: 'BTS',
+    kgroup: 'BTS',
     members: 7,
     vocalist: 'V',
     rapper: 'Suga',
@@ -11,7 +11,7 @@ export default [
     face: 'Jimin'
   },
   {
-    group: 'Mamamoo',
+    kgroup: 'Mamamoo',
     members: 4,
     vocalist: 'Wheein',
     rapper: 'Moonbyul',
@@ -22,7 +22,7 @@ export default [
     face: 'Solar'
   },
   {
-    group: '(G)I-dle',
+    kgroup: '(G)I-dle',
     members: 6,
     vocalist: 'Minnie',
     rapper: 'Soyeon',
@@ -33,7 +33,7 @@ export default [
     face: 'Yuqi'
   },
   {
-    group: 'SHINee',
+    kgroup: 'SHINee',
     members: 5,
     vocalist: 'Jonghyun',
     rapper: 'Key',
@@ -44,7 +44,7 @@ export default [
     face: 'Jonghyun'
   },
   {
-    group: 'Itzy',
+    kgroup: 'Itzy',
     members: 5,
     vocalist: 'Lia',
     rapper: 'Ryujin',
@@ -54,4 +54,15 @@ export default [
     maknae: 'Yuna',
     face: 'Ryujin'
   },
+  {
+    kgroup: 'Ateez',
+    members: 8,
+    vocalist: 'Wooyoung',
+    rapper: 'Mingi',
+    dancer: 'San',
+    visual: 'Seonghwa',
+    leader: 'Hongjoong',
+    maknae: 'Jongho',
+    face: 'Hongjoong'
+  }
 ];
