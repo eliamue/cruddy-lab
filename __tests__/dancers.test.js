@@ -24,5 +24,40 @@ describe('dancers routes', () => {
     });
   });
 
+  it('gets all dancers', async () => {
+    const twice = await Dancers.createDancer(
+      {
+        kgroup: 'Twice',
+        name: 'Momo'
+      });
   
+    const exo = await Dancers.createDancer(
+      {
+        kgroup: 'Exo', 
+        name: 'Kai'
+      });
+  
+    const gg = await Dancers.createDancer(
+      {
+        kgroup: 'Girls Generation', 
+        name: 'Hyoyeon'
+      });
+  
+    const beg = await Dancers.createDancer(
+      {
+        kgroup: 'Brown Eyed Girls', 
+        name: 'Gain'
+      });
+  
+    const bts = await Dancers.createDancer(
+      {
+        kgroup: 'BTS', 
+        name: 'J-Hope'
+      });
+
+    const res = await request(app)
+      .get('api/v1/dancers');
+
+    expect(res.body).toEqual([twice, exo, gg, beg, bts]);
+  });
 });
