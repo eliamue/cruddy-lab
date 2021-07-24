@@ -56,7 +56,7 @@ describe('dancers routes', () => {
       });
 
     const res = await request(app)
-      .get('api/v1/dancers');
+      .get('/api/v1/dancers');
 
     expect(res.body).toEqual([twice, exo, gg, beg, bts]);
   });
