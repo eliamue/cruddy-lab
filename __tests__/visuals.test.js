@@ -68,4 +68,15 @@ describe('visuals routes', () => {
     expect(res.body).toEqual([bts, redvelvet, blackpink, wondergirls, straykids, zea]);
   });
 
+  it('grabs one visual by id', async () => {
+    const redvelvet = await Visuals.createVisual({
+      kgroup: 'Red Velvet',
+      stage_name: 'Irene',
+      real_name: 'Bae Joo-hyun'
+    });
+    const res = await request(app)
+      .get(`/api/v1/visuals/${redvelvet.id}`);
+
+    expect(res.body).toEqual(redvelvet);
+  });
 });
