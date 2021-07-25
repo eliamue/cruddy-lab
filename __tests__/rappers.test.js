@@ -28,8 +28,8 @@ describe('rappers routes', () => {
   it('gets all rappers', async () => {
     const strayKids = await Rappers.createRapper({
       kgroup: 'Stray Kids', 
-      stage_name: 'Hyunjin',
-      real_name: 'Hwang Hyun-jin' 
+      stage_name: 'Han',
+      real_name: 'Han Ji-sung' 
     });
 
     const mamamoo = await Rappers.createRapper({
