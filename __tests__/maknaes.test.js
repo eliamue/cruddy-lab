@@ -56,15 +56,15 @@ describe('maknaes CRUD routes', () => {
       real_name: 'Oh Se-hun'
     });
 
-    const itzy = await Maknaes.createMaknae({
-      kgroup: 'Itzy',
-      stage_name: 'Yuna',
-      real_name: 'Shin Yu-na'
+    const redvelvet = await Maknaes.createMaknae({
+      kgroup: 'Red Velvet',
+      stage_name: 'Joy',
+      real_name: 'Park Soo-young'
     });
 
     const res = await request(app)
       .get('/api/v1/maknaes');
-    expect(res.body).toEqual([bts, mamamoo, shinee, gidle, exo, itzy]);
+    expect(res.body).toEqual([bts, mamamoo, shinee, gidle, exo, redvelvet]);
   });
 
   it('gets one maknae by id', async () => {
@@ -77,5 +77,24 @@ describe('maknaes CRUD routes', () => {
       .get(`/api/v1/maknaes/${itzy.id}`);
 
     expect(res.body).toEqual(itzy);
+  });
+
+  it('updates the maknae', async () => {
+    const redvelvet = await Maknaes.createMaknae({
+      kgroup: 'Red Velvet',
+      stage_name: 'Joy',
+      real_name: 'Park Soo-young'
+    });
+    const res = await request(app)
+      .put(`/api/v1/maknaes/${redvelvet.id}`)
+      .send({
+        stage_name: 'Yeri',
+        real_name: 'Kim Ye-rim'
+      });
+    expect(res.body).toEqual({
+      ...redvelvet,
+      stage_name: 'Yeri',
+      real_name: 'Kim Ye-rim'
+    });
   });
 });
