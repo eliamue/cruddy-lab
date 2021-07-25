@@ -58,10 +58,17 @@ describe('rappers routes', () => {
         real_name: 'Kim Hong-joong' 
       });
 
+    const gidle = await Rappers.createRapper(
+      {
+        kgroup: '(G)I-dle', 
+        stage_name: 'Soyeon',
+        real_name: 'Jeon So-yeon' 
+      });
+
     const res = await request(app)
       .get('/api/v1/rappers');
 
-    expect(res.body).toEqual([strayKids, mamamoo, bts, shinee, ateez]);
+    expect(res.body).toEqual([strayKids, mamamoo, bts, shinee, ateez, gidle]);
   });
 
   it('gets one rapper by id', async () => {

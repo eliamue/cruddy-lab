@@ -40,18 +40,18 @@ describe('dancers routes', () => {
         real_name: 'Kim Jong-in'
       });
   
-    const gg = await Dancers.createDancer(
+    const gidle = await Dancers.createDancer(
       {
-        kgroup: 'Girls Generation', 
-        stage_name: 'Hyoyeon',
-        real_name: 'Kim Hyo-yeon'
+        kgroup: '(G)I-dle', 
+        stage_name: 'Soojin',
+        real_name: 'Seo Soo-jin'
       });
   
-    const beg = await Dancers.createDancer(
+    const shinee = await Dancers.createDancer(
       {
-        kgroup: 'Brown Eyed Girls', 
-        stage_name: 'Gain',
-        real_name: 'Son Ga-in'
+        kgroup: 'SHINee', 
+        stage_name: 'Taemin',
+        real_name: 'Lee Tae-min'
       });
   
     const bts = await Dancers.createDancer(
@@ -61,10 +61,17 @@ describe('dancers routes', () => {
         real_name: 'Jung Ho-seok'
       });
 
+    const blackpink = await Dancers.createDancer(
+      {
+        kgroup: 'BlackPink', 
+        stage_name: 'Lisa',
+        real_name: 'Lalisa Manoban'
+      });
+
     const res = await request(app)
       .get('/api/v1/dancers');
 
-    expect(res.body).toEqual([twice, exo, gg, beg, bts]);
+    expect(res.body).toEqual([twice, exo, gidle, shinee, bts, blackpink]);
   });
 
   it('gets one vocalist by id', async () => {

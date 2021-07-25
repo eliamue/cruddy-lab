@@ -47,11 +47,11 @@ describe('vocalists routes', () => {
         real_name: 'Kim Tae-hyung'
       });
 
-    const shinee = await Vocalists.createVocalist(
+    const ateez = await Vocalists.createVocalist(
       {
-        kgroup: 'SHINee', 
-        stage_name: 'Taemin',
-        real_name: 'Lee Tae-min'
+        kgroup: 'Ateez', 
+        stage_name: 'Jongho',
+        real_name: 'Choi Jong-ho'
       });
 
     const itzy = await Vocalists.createVocalist(
@@ -60,11 +60,18 @@ describe('vocalists routes', () => {
         stage_name: 'Lia',
         real_name: 'Choi Ji-su'
       });
+
+    const shinee = await Vocalists.createVocalist(
+      {
+        kgroup: 'SHINee', 
+        stage_name: 'Onew',
+        real_name: 'Lee Jin-ki'
+      });
         
     const res = await request(app)
       .get('/api/v1/vocalists');
 
-    expect(res.body).toEqual([gIdle, mamamoo, bts, shinee, itzy]);
+    expect(res.body).toEqual([gIdle, mamamoo, bts, ateez, itzy, shinee]);
   });
 
   it('gets one vocalist by id', async () => {
