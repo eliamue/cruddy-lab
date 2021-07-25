@@ -66,4 +66,16 @@ describe('maknaes CRUD routes', () => {
       .get('/api/v1/maknaes');
     expect(res.body).toEqual([bts, mamamoo, shinee, gidle, exo, itzy]);
   });
+
+  it('gets one maknae by id', async () => {
+    const itzy = await Maknaes.createMaknae({
+      kgroup: 'Itzy',
+      stage_name: 'Yuna',
+      real_name: 'Shin Yu-na'
+    });
+    const res = await request(app)
+      .get(`/api/v1/maknaes/${itzy.id}`);
+
+    expect(res.body).toEqual(itzy);
+  });
 });
