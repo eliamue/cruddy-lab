@@ -35,7 +35,7 @@ describe('dancers routes', () => {
   
     const exo = await Dancers.createDancer(
       {
-        kgroup: 'Exo', 
+        kgroup: 'EXO', 
         stage_name: 'Kai',
         real_name: 'Kim Jong-in'
       });
