@@ -71,5 +71,17 @@ describe('dancers routes', () => {
     expect(res.body).toEqual(exo);
   });
 
+  it('updates the dancer of a specific existing group', async () => {
+    const bts = await Dancers.createDancer({
+      kgroup: 'BTS',
+      name: 'Jimin'
+    });
+    const res = await request(app)
+      .put(`/api/v1/dancers/${bts.id}`)
+      .send({
+        name: 'Jimin'
+      });
+  });
+
 
 });
