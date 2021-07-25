@@ -101,15 +101,15 @@ describe('group leaders CRUD routes', () => {
 
   it('deletes a specific existing leader', async () => {
     const leader = await Leaders.createLeader({
-      kgroup: 'Twice',
-      stage_name: 'Jihyo',
-      real_name: 'Park Ji-soo'
+      kgroup: 'Ateez',
+      stage_name: 'Hongjoong',
+      real_name: 'Kim Hong-joong'
     });
     const res = await request(app)
       .delete(`/api/v1/leaders/${leader.id}`);
 
     expect(res.body).toEqual({
-      message: `${leader.stage_name} has been deleted. What did ${leader.stage_name} do to deserve that!?`
+      message: `${leader.stage_name} has been deleted. What, you think ${leader.kgroup} can function without ${leader.stage_name}? Those chaotic idiots are doomed without their babysitter.`
     });
   });
 });
