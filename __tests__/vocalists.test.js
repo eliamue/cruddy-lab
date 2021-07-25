@@ -100,5 +100,4 @@ describe('vocalists routes', () => {
       message: `${vocalist.name} has been deleted. What did ${vocalist.name} do to deserve that!?`
     });
   });
-
 });

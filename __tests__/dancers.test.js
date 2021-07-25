@@ -85,10 +85,19 @@ describe('dancers routes', () => {
       ...bts,
       name: 'Jimin'
     });
-
-
-    
   });
 
+  it('deletes a specific existing dancer', async () => {
+    const dancer = await Dancers.createDancer({
+      kgroup: 'Girls Generation',
+      name: 'Hyoyeon'
+    });
+    const res = await request(app)
+      .delete(`/api/v1/dancers/${dancer.id}`);
 
+    expect(res.body).toEqual({
+      message: `You have deleted ${dancer.name} for some horribly cruel reason. For shame.`
+    });
+  });
 });
+
