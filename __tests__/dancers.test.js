@@ -96,7 +96,7 @@ describe('dancers routes', () => {
       .delete(`/api/v1/dancers/${dancer.id}`);
 
     expect(res.body).toEqual({
-      message: `You have deleted ${dancer.name} for some horribly cruel reason. For shame.`
+      message: `You have deleted ${dancer.name} for some horribly cruel reason. For SHAME.`
     });
   });
 });
