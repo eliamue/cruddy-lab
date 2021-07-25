@@ -26,7 +26,7 @@ describe('rappers routes', () => {
   });
   
   it('gets all rappers', async () => {
-    const strayKids = await Rappers.createRapper({
+    const straykids = await Rappers.createRapper({
       kgroup: 'Stray Kids', 
       stage_name: 'Han',
       real_name: 'Han Ji-sung' 
@@ -68,7 +68,7 @@ describe('rappers routes', () => {
     const res = await request(app)
       .get('/api/v1/rappers');
 
-    expect(res.body).toEqual([strayKids, mamamoo, bts, shinee, ateez, gidle]);
+    expect(res.body).toEqual([straykids, mamamoo, bts, shinee, ateez, gidle]);
   });
 
   it('gets one rapper by id', async () => {

@@ -26,7 +26,7 @@ describe('vocalists routes', () => {
   });
 
   it('gets all vocalists', async () => {
-    const gIdle = await Vocalists.createVocalist(
+    const gidle = await Vocalists.createVocalist(
       {
         kgroup: '(G)I-dle', 
         stage_name: 'Minnie',
@@ -71,7 +71,7 @@ describe('vocalists routes', () => {
     const res = await request(app)
       .get('/api/v1/vocalists');
 
-    expect(res.body).toEqual([gIdle, mamamoo, bts, ateez, itzy, shinee]);
+    expect(res.body).toEqual([gidle, mamamoo, bts, ateez, itzy, shinee]);
   });
 
   it('gets one vocalist by id', async () => {
