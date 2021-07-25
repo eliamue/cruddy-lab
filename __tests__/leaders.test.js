@@ -67,4 +67,16 @@ describe('group leaders CRUD routes', () => {
       .get('/api/v1/leaders');
     expect(res.body).toEqual([bts, mamamoo, ateez, twice, monstax, itzy]);
   });
+
+  it('gets one leader by id', async () => {
+    const itzy = await Leaders.createleader({
+      kgroup: 'Itzy',
+      stage_name: 'Yeji',
+      real_name: 'Hwang Ye-ji'
+    });
+    const res = await request(app)
+      .get(`/api/v1/leaders/${itzy.id}`);
+
+    expect(res.body).toEqual(itzy);
+  });
 });
