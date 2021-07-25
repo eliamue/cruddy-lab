@@ -79,4 +79,23 @@ describe('group leaders CRUD routes', () => {
 
     expect(res.body).toEqual(itzy);
   });
+
+  it('updates the leader of a specific existing group', async () => {
+    const bts = await Leaders.createleader({
+      kgroup: 'BTS',
+      stage_name: 'Rap Monster',
+      real_name: 'Kim Nam-joon'
+    });
+    const res = await request(app)
+      .put(`/api/v1/leaders/${bts.id}`)
+      .send({
+        stage_name: 'RM',
+        real_name: 'Kim Nam-joon'
+      });
+    expect(res.body).toEqual({
+      ...bts,
+      stage_name: 'RM',
+      real_name: 'Kim Nam-joon'
+    });
+  });
 });
