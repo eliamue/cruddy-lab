@@ -81,6 +81,13 @@ describe('dancers routes', () => {
       .send({
         name: 'Jimin'
       });
+    expect(res.body).toEqual({
+      ...bts,
+      name: 'Jimin'
+    });
+
+
+    
   });
 
 
