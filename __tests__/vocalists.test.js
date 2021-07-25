@@ -89,8 +89,8 @@ describe('vocalists routes', () => {
   it('updates the vocalist of a specific existing group', async () => {
     const mamamoo = await Vocalists.createVocalist({
       kgroup: 'Mamamoo',
-      stage_name: 'Wheein',
-      real_name: ''
+      stage_name: 'Hwasa',
+      real_name: 'Ahn Hye-jin'
     });
     const res = await request(app)
       .put(`/api/v1/vocalists/${mamamoo.id}`)

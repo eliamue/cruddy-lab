@@ -88,8 +88,8 @@ describe('dancers routes', () => {
   it('updates the dancer of a specific existing group', async () => {
     const bts = await Dancers.createDancer({
       kgroup: 'BTS',
-      stage_name: 'Jimin',
-      real_name: 'Park Ji-min' 
+      stage_name: 'J-Hope',
+      real_name: 'Jung Ho-seok'
     });
     const res = await request(app)
       .put(`/api/v1/dancers/${bts.id}`)

@@ -83,8 +83,8 @@ describe('visuals routes', () => {
   it('updates the visual of a specified existing group', async () => {
     const bts = await Visuals.createVisual({
       kgroup: 'BTS',
-      stage_name: 'V',
-      real_name: 'Kim Tae-hyung'
+      stage_name: 'Jin',
+      real_name: 'Kim Seok-jin'
     });
     const res = await request(app)
       .put(`/api/v1/visuals/${bts.id}`)

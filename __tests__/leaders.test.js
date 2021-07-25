@@ -2,7 +2,7 @@ import pool from '../lib/utils/pool';
 import setup from '../data/setup';
 import request from 'supertest';
 import app from '../lib/app';
-import Leaders from '../lib/models/Leaders';
+
 
 describe('group leaders CRUD routes', () => {
   beforeEach(() => {

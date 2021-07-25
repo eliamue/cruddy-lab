@@ -86,8 +86,8 @@ describe('rappers routes', () => {
   it('updates the rapper of a specific existing group', async () => {
     const bts = await Rappers.createRapper({
       kgroup: 'BTS',
-      stage_name: 'J-Hope',
-      real_name: 'Jung Ho-seok' 
+      stage_name: 'Suga',
+      real_name: 'Min Yoon-gi'
     });
     const res = await request(app)
       .put(`/api/v1/rappers/${bts.id}`)
