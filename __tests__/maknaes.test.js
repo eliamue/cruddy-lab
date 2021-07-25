@@ -97,4 +97,18 @@ describe('maknaes CRUD routes', () => {
       real_name: 'Kim Ye-rim'
     });
   });
+
+  it('deletes a specific existing maknae', async () => {
+    const maknae = await Maknaes.createMaknae({
+      kgroup: '(G)I-dle',
+      stage_name: 'Shuhua',
+      real_name: 'Yeh Shuhua'
+    });
+    const res = await request(app)
+      .delete(`/api/v1/maknaes/${maknae.id}`);
+
+    expect(res.body).toEqual({
+      message: `${maknae.stage_name} has been deleted. Rude.`
+    });
+  });
 });
