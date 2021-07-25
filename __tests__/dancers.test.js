@@ -12,7 +12,9 @@ describe('dancers routes', () => {
   it('creates a new dancer', async () => {
     const twice = {
       kgroup: 'Twice',
-      name: 'Momo'
+      stage_name: 'Momo',
+      real_name: 'Hirai Momo'
+
     };
     const res = await request(app)
       .post('/api/v1/dancers')
@@ -28,31 +30,36 @@ describe('dancers routes', () => {
     const twice = await Dancers.createDancer(
       {
         kgroup: 'Twice',
-        name: 'Momo'
+        stage_name: 'Momo',
+        real_name: 'Hirai Momo'
       });
   
     const exo = await Dancers.createDancer(
       {
         kgroup: 'Exo', 
-        name: 'Kai'
+        stage_name: 'Kai',
+        real_name: 'Kim Jong-in'
       });
   
     const gg = await Dancers.createDancer(
       {
         kgroup: 'Girls Generation', 
-        name: 'Hyoyeon'
+        stage_name: 'Hyoyeon',
+        real_name: 'Kim Hyo-yeon'
       });
   
     const beg = await Dancers.createDancer(
       {
         kgroup: 'Brown Eyed Girls', 
-        name: 'Gain'
+        stage_name: 'Gain',
+        real_name: 'Son Ga-in'
       });
   
     const bts = await Dancers.createDancer(
       {
         kgroup: 'BTS', 
-        name: 'J-Hope'
+        stage_name: 'J-Hope',
+        real_name: 'Jung Ho-seok'
       });
 
     const res = await request(app)
@@ -64,7 +71,8 @@ describe('dancers routes', () => {
   it('gets one vocalist by id', async () => {
     const exo = await Dancers.createDancer({
       kgroup: 'Exo',
-      name: 'Kai'
+      stage_name: 'Kai',
+      real_name: 'Kim Jong-in'
     });
     const res = await request(app)
       .get(`/api/v1/dancers/${exo.id}`);
@@ -74,29 +82,33 @@ describe('dancers routes', () => {
   it('updates the dancer of a specific existing group', async () => {
     const bts = await Dancers.createDancer({
       kgroup: 'BTS',
-      name: 'Jimin'
+      stage_name: 'Jimin',
+      real_name: 'Park Ji-min' 
     });
     const res = await request(app)
       .put(`/api/v1/dancers/${bts.id}`)
       .send({
-        name: 'Jimin'
+        stage_name: 'Jimin',
+        real_name: 'Park Ji-min' 
       });
-    expect(res.body).toEqual({
-      ...bts,
-      name: 'Jimin'
+    expect(res.body).toEqual({ 
+      ...bts, 
+      stage_name: 'Jimin',
+      real_name: 'Park Ji-min'  
     });
   });
 
   it('deletes a specific existing dancer', async () => {
     const dancer = await Dancers.createDancer({
       kgroup: 'Girls Generation',
-      name: 'Hyoyeon'
+      stage_name: 'Hyoyeon',
+      real_name: 'Kim Hyo-yeon'
     });
     const res = await request(app)
       .delete(`/api/v1/dancers/${dancer.id}`);
 
     expect(res.body).toEqual({
-      message: `You have deleted ${dancer.name} for some horribly cruel reason. For SHAME.`
+      message: `You have deleted ${dancer.stage_name} for some horribly cruel reason. For SHAME.`
     });
   });
 });

@@ -5,17 +5,20 @@ DROP TABLE IF EXISTS dancers;
 CREATE TABLE rappers (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     kgroup TEXT NOT NULL,
-    name TEXT NOT NULL
+    stage_name TEXT NOT NULL,
+    real_name TEXT NOT NULL
 );
 
 CREATE TABLE vocalists (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     kgroup TEXT NOT NULL,
-    name TEXT NOT NULL
+    stage_name TEXT NOT NULL,
+    real_name TEXT NOT NULL
 );
 
 CREATE TABLE dancers (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     kgroup TEXT NOT NULL,
-    name TEXT NOT NULL
+    stage_name TEXT NOT NULL,
+    real_name TEXT NOT NULL
 );

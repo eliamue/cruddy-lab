@@ -12,7 +12,8 @@ describe('vocalists routes', () => {
   it('creates a new vocalist', async () => {
     const gIdle = {
       kgroup: '(G)I-dle',
-      name: 'Minnie'
+      stage_name: 'Minnie',
+      real_name: 'Nicha Yontararak'
     };
     const res = await request(app)
       .post('/api/v1/vocalists')
@@ -28,31 +29,36 @@ describe('vocalists routes', () => {
     const gIdle = await Vocalists.createVocalist(
       {
         kgroup: '(G)I-dle', 
-        name: 'Minnie'
+        stage_name: 'Minnie',
+        real_name: 'Nicha Yontararak'
       });
 
     const mamamoo = await Vocalists.createVocalist(
       {
         kgroup: 'Mamamoo', 
-        name: 'Hwasa'
+        stage_name: 'Hwasa',
+        real_name: 'Ahn Hye-jin'
       });
 
     const bts = await Vocalists.createVocalist(
       {
         kgroup: 'BTS', 
-        name: 'V'
+        stage_name: 'V',
+        real_name: 'Kim Tae-hyung'
       });
 
     const shinee = await Vocalists.createVocalist(
       {
         kgroup: 'SHINee', 
-        name: 'Taemin'
+        stage_name: 'Taemin',
+        real_name: 'Lee Tae-min'
       });
 
     const itzy = await Vocalists.createVocalist(
       {
         kgroup: 'Itzy', 
-        name: 'Lia'
+        stage_name: 'Lia',
+        real_name: 'Choi Ji-su'
       });
         
     const res = await request(app)
@@ -64,7 +70,8 @@ describe('vocalists routes', () => {
   it('gets one vocalist by id', async () => {
     const mamamoo = await Vocalists.createVocalist({
       kgroup: 'Mamamoo',
-      name: 'Hwasa'
+      stage_name: 'Hwasa',
+      real_name: 'Ahn Hye-jin'
     });
     const res = await request(app)
       .get(`/api/v1/vocalists/${mamamoo.id}`);
@@ -75,29 +82,33 @@ describe('vocalists routes', () => {
   it('updates the vocalist of a specific existing group', async () => {
     const mamamoo = await Vocalists.createVocalist({
       kgroup: 'Mamamoo',
-      name: 'Wheein'
+      stage_name: 'Wheein',
+      real_name: ''
     });
     const res = await request(app)
       .put(`/api/v1/vocalists/${mamamoo.id}`)
       .send({
-        name: 'Wheein'
+        stage_name: 'Wheein',
+        real_name: 'Jung Whee-in'
       });
     expect(res.body).toEqual({
       ...mamamoo,
-      name: 'Wheein'
+      stage_name: 'Wheein',
+      real_name: 'Jung Whee-in'
     });
   });
 
   it('deletes a specific existing vocalist', async () => {
     const vocalist = await Vocalists.createVocalist({
       kgroup: 'Itzy',
-      name: 'Lia'
+      stage_name: 'Lia',
+      real_name: 'Choi Ji-su'
     });
     const res = await request(app)
       .delete(`/api/v1/vocalists/${vocalist.id}`);
 
     expect(res.body).toEqual({
-      message: `${vocalist.name} has been deleted. What did ${vocalist.name} do to deserve that!?`
+      message: `${vocalist.stage_name} has been deleted. What did ${vocalist.stage_name} do to deserve that!?`
     });
   });
 });

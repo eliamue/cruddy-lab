@@ -12,7 +12,8 @@ describe('rappers routes', () => {
   it('creates a new rapper', async () => {
     const strayKids = { 
       kgroup: 'Stray Kids', 
-      name: 'Hyunjin' 
+      stage_name: 'Hyunjin',
+      real_name: 'Hwang Hyun-jin' 
     };
     const res = await request(app)
       .post('/api/v1/rappers')
@@ -27,29 +28,34 @@ describe('rappers routes', () => {
   it('gets all rappers', async () => {
     const strayKids = await Rappers.createRapper({
       kgroup: 'Stray Kids', 
-      name: 'Hyunjin'
+      stage_name: 'Hyunjin',
+      real_name: 'Hwang Hyun-jin' 
     });
 
     const mamamoo = await Rappers.createRapper({
       kgroup: 'Mamamoo', 
-      name: 'Moonbyul'
+      stage_name: 'Moonbyul',
+      real_name: 'Moon Byul-yi' 
     });
 
     const bts = await Rappers.createRapper(
       {
         kgroup: 'BTS', 
-        name: 'Suga'
+        stage_name: 'Suga',
+        real_name: 'Min Yoon-gi' 
       });
 
     const shinee = await Rappers.createRapper(
       {
         kgroup: 'SHINee', 
-        name: 'Minho'
+        stage_name: 'Minho',
+        real_name: 'Choi Min-ho' 
       });
     const ateez = await Rappers.createRapper(
       {
         kgroup: 'Ateez', 
-        name: 'Hongjoong'
+        stage_name: 'Hongjoong',
+        real_name: 'Kim Hong-joong' 
       });
 
     const res = await request(app)
@@ -61,7 +67,8 @@ describe('rappers routes', () => {
   it('gets one rapper by id', async () => {
     const ateez = await Rappers.createRapper({
       kgroup: 'Ateez',
-      name: 'Hongjoong'
+      stage_name: 'Hongjoong',
+      real_name: 'Kim Hong-joong' 
     });
     const res = await request(app)
       .get(`/api/v1/rappers/${ateez.id}`);
@@ -72,29 +79,33 @@ describe('rappers routes', () => {
   it('updates the rapper of a specific existing group', async () => {
     const bts = await Rappers.createRapper({
       kgroup: 'BTS',
-      name: 'J-Hope'
+      stage_name: 'J-Hope',
+      real_name: 'Jung Ho-seok' 
     });
     const res = await request(app)
       .put(`/api/v1/rappers/${bts.id}`)
       .send({
-        name: 'J-Hope'
+        stage_name: 'J-Hope',
+        real_name: 'Jung Ho-seok' 
       });
     expect(res.body).toEqual({ 
       ...bts, 
-      name: 'J-Hope' 
+      stage_name: 'J-Hope',
+      real_name: 'Jung Ho-seok'  
     });
   });
 
   it('deletes a specific existing rapper', async () => {
     const rapper = await Rappers.createRapper({
       kgroup: 'Ateez',
-      name: 'Hongjoong'
+      stage_name: 'Hongjoong',
+      real_name: 'Kim Hong-joong' 
     });
     const res = await request(app)
       .delete(`/api/v1/rappers/${rapper.id}`);
 
     expect(res.body).toEqual({
-      message: `${rapper.name} has been removed. Poor ${rapper.name}!`
+      message: `${rapper.stage_name} has been removed. Poor ${rapper.stage_name}!`
     });
   });
 });
