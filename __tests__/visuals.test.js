@@ -97,6 +97,19 @@ describe('visuals routes', () => {
       stage_name: 'V',
       real_name: 'Kim Tae-hyung'
     });
+  });
 
+  it('deletes a specific existing visual', async () => {
+    const visual = await Visuals.createVisual({
+      kgroup: 'ZE:A',
+      stage_name: 'Hyungsik',
+      real_name: 'Park Hyung-sik'
+    });
+    const res = await request(app)
+      .delete(`/api/v1/visuals/${visual.id}`);
+
+    expect(res.body).toEqual({
+      message: `You have deleted ${visual.stage_name}. Not sure how you sleep at night, but okay.`
+    });
   });
 });
