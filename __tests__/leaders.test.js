@@ -98,4 +98,18 @@ describe('group leaders CRUD routes', () => {
       real_name: 'Kim Nam-joon'
     });
   });
+
+  it('deletes a specific existing leader', async () => {
+    const leader = await Leaders.createLeader({
+      kgroup: 'Twice',
+      stage_name: 'Jihyo',
+      real_name: 'Park Ji-soo'
+    });
+    const res = await request(app)
+      .delete(`/api/v1/leaders/${leader.id}`);
+
+    expect(res.body).toEqual({
+      message: `${leader.stage_name} has been deleted. What did ${leader.stage_name} do to deserve that!?`
+    });
+  });
 });
