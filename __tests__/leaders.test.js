@@ -69,7 +69,7 @@ describe('group leaders CRUD routes', () => {
   });
 
   it('gets one leader by id', async () => {
-    const itzy = await Leaders.createleader({
+    const itzy = await Leaders.createLeader({
       kgroup: 'Itzy',
       stage_name: 'Yeji',
       real_name: 'Hwang Ye-ji'
