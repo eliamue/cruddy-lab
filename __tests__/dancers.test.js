@@ -14,7 +14,6 @@ describe('dancers routes', () => {
       kgroup: 'Twice',
       stage_name: 'Momo',
       real_name: 'Hirai Momo'
-
     };
     const res = await request(app)
       .post('/api/v1/dancers')
