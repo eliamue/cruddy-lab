@@ -81,7 +81,7 @@ describe('group leaders CRUD routes', () => {
   });
 
   it('updates the leader of a specific existing group', async () => {
-    const bts = await Leaders.createleader({
+    const bts = await Leaders.createLeader({
       kgroup: 'BTS',
       stage_name: 'Rap Monster',
       real_name: 'Kim Nam-joon'
