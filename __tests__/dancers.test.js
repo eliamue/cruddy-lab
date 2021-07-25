@@ -60,4 +60,16 @@ describe('dancers routes', () => {
 
     expect(res.body).toEqual([twice, exo, gg, beg, bts]);
   });
+
+  it('gets one vocalist by id', async () => {
+    const exo = await Dancers.createDancer({
+      kgroup: 'Exo',
+      name: 'Kai'
+    });
+    const res = await request(app)
+      .get(`/api/v1/dancers/${exo.id}`);
+    expect(res.body).toEqual(exo);
+  });
+
+
 });
