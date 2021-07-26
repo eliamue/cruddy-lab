@@ -4,7 +4,7 @@ import request from 'supertest';
 import app from '../lib/app';
 import Visuals from '../lib/models/Visuals';
 
-describe.skip('visuals routes', () => {
+describe('visuals routes', () => {
   beforeEach(() => {
     return setup(pool);
   });
