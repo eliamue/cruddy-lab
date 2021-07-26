@@ -1,8 +1,8 @@
-import pool from '../lib/utils/pool';
-import setup from '../data/setup';
+import pool from '../lib/utils/pool.js';
+import setup from '../data/setup.js';
 import request from 'supertest';
-import app from '../lib/app';
-import Visuals from '../lib/models/Visuals';
+import app from '../lib/app.js';
+import Visual from '../lib/models/Visual.js';
 
 describe('visuals routes', () => {
   beforeEach(() => {
@@ -26,37 +26,37 @@ describe('visuals routes', () => {
   });
 
   it('gets all visuals', async () => {
-    const bts = await Visuals.createVisual({
+    const bts = await Visual.createVisual({
       kgroup: 'BTS',
       stage_name: 'Jin',
       real_name: 'Kim Seok-jin'
     });
 
-    const redvelvet = await Visuals.createVisual({
+    const redvelvet = await Visual.createVisual({
       kgroup: 'Red Velvet',
       stage_name: 'Irene',
       real_name: 'Bae Joo-hyun'
     });
 
-    const blackpink = await Visuals.createVisual({
+    const blackpink = await Visual.createVisual({
       kgroup: 'BlackPink',
       stage_name: 'Jisoo',
       real_name: 'Kim Ji-soo'
     });
 
-    const wondergirls = await Visuals.createVisual({
+    const wondergirls = await Visual.createVisual({
       kgroup: 'Wonder Girls',
       stage_name: 'Sunmi',
       real_name: 'Lee Sun-mi'
     });
 
-    const straykids = await Visuals.createVisual({
+    const straykids = await Visual.createVisual({
       kgroup: 'Stray Kids',
       stage_name: 'Hyunjin',
       real_name: 'Hwang Hyun-jin'
     });
 
-    const zea = await Visuals.createVisual({
+    const zea = await Visual.createVisual({
       kgroup: 'ZE:A',
       stage_name: 'Hyungsik',
       real_name: 'Park Hyung-sik'
@@ -69,7 +69,7 @@ describe('visuals routes', () => {
   });
 
   it('grabs one visual by id', async () => {
-    const redvelvet = await Visuals.createVisual({
+    const redvelvet = await Visual.createVisual({
       kgroup: 'Red Velvet',
       stage_name: 'Irene',
       real_name: 'Bae Joo-hyun'
@@ -81,7 +81,7 @@ describe('visuals routes', () => {
   });
 
   it('updates the visual of a specified existing group', async () => {
-    const bts = await Visuals.createVisual({
+    const bts = await Visual.createVisual({
       kgroup: 'BTS',
       stage_name: 'Jin',
       real_name: 'Kim Seok-jin'
@@ -100,7 +100,7 @@ describe('visuals routes', () => {
   });
 
   it('deletes a specific existing visual', async () => {
-    const visual = await Visuals.createVisual({
+    const visual = await Visual.createVisual({
       kgroup: 'ZE:A',
       stage_name: 'Hyungsik',
       real_name: 'Park Hyung-sik'
