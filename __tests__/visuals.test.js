@@ -1,8 +1,8 @@
-import pool from '../lib/utils/pool';
-import setup from '../data/setup';
+import pool from '../lib/utils/pool.js';
+import setup from '../data/setup.js';
 import request from 'supertest';
-import app from '../lib/app';
-import Visuals from '../lib/models/Visuals';
+import app from '../lib/app.js';
+import Visuals from '../lib/models/Visuals.js';
 
 describe('visuals routes', () => {
   beforeEach(() => {
